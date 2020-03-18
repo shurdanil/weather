@@ -16,9 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from weather_app import views
-from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api/points/$', views.points),
+    path('points/<str:graph_type>', views.points, name='points'),
 ]

@@ -14,7 +14,7 @@ class WeatherValue(models.Model):
         verbose_name="Pressure"
     )
 
-    temperature = models.IntegerField(
+    temperature = models.FloatField(
         null=False,
         blank=False,
         verbose_name="Temperature"
@@ -26,3 +26,11 @@ class WeatherValue(models.Model):
         verbose_name="Registration time"
     )
 
+    @staticmethod
+    def dimension(graph_type):
+        dimensions = {
+            'humidity': '%',
+            'pressure': 'mb',
+            'temperature': '°C'
+        }
+        return dimensions.get(graph_type)

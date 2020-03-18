@@ -3,9 +3,10 @@ const API_URL = 'http://localhost:8000';
 
 export default class WeatherService{
 
-    getWeatherGraph() {
-
-        const url = `${API_URL}/api/points/`;
-        return axios.get(url).then(response => response.data);
+    getWeatherGraph(graphType='temperature',
+                    start=new Date(new Date().setDate(new Date().getDate()-7)),
+                    end=new Date()) {
+        const url = `${API_URL}/points/${graphType}`;
+        return axios.get(url, {params: {start: start, end: end}}).then(response => response.data);
     }
 }
