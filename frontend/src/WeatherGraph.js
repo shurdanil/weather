@@ -18,7 +18,11 @@ class  WeatherGraph  extends  Component {
 }
 
   fix_datepicker_bug (date) {
-    return new Date(new Date().setDate(date.getDate()));
+    if (date) {
+      return new Date(new Date().setDate(date.getDate()));
+    } else {
+      return date
+    }
   }
 
   original (result) {
@@ -126,6 +130,7 @@ class  WeatherGraph  extends  Component {
           <div className="col-3">
             <DatePicker
               id='graph_start'
+              clearIcon={false}
               onChange={this.handleChangeGraphStart}
               value={this.start}
               maxDate={this.end}
@@ -135,6 +140,7 @@ class  WeatherGraph  extends  Component {
         <div className="col-3">
           <DatePicker
             id='graph_end'
+            clearIcon={false}
             onChange={this.handleChangeGraphEnd}
             value={this.end}
             maxDate={this.today}

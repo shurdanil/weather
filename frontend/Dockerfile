@@ -7,3 +7,4 @@ COPY public /app/frontend/public
 COPY src /app/frontend/src
 
 RUN npm install --silent
+CMD npm start

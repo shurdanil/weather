@@ -9,20 +9,13 @@ services:
       - POSTGRES_DB=weather
     ports:
       - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
   django:
     image: shurdanil/wheather:django
-    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     ports:
       - "8000:8000"
     depends_on:
       - db
   frontend:
     image: shurdanil/wheather:frontend
-    command: ["npm", "start"]
     ports:
       - "3000:3000"
-
-volumes:
-  postgres_data:

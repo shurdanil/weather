@@ -21,6 +21,7 @@ class WeatherValue(models.Model):
     )
 
     time = models.DateField(
+        unique=True,
         null=False,
         blank=False,
         verbose_name="Registration time"
