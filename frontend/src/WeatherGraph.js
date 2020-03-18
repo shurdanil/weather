@@ -17,6 +17,10 @@ class  WeatherGraph  extends  Component {
     this.show_past = false;
 }
 
+  fix_datepicker_bug (date) {
+    return new Date(new Date().setDate(date.getDate()));
+  }
+
   original (result) {
     let self = this;
     let dict = {
@@ -64,7 +68,7 @@ class  WeatherGraph  extends  Component {
 
   handleChangeGraphType(e, graph_type) {
     let self = this;
-    weatherService.getWeatherGraph(graph_type, self.start, self.end).then(function (result) {
+    weatherService.getWeatherGraph(graph_type, this.fix_datepicker_bug(self.start), this.fix_datepicker_bug(self.end)).then(function (result) {
       self.graph_type = result.name.toLowerCase();
       self.setState(self.original(result))
     });
@@ -73,7 +77,7 @@ class  WeatherGraph  extends  Component {
   handleChangeGraphStart = date => {
     let self = this;
     self.start = date;
-    weatherService.getWeatherGraph(self.graph_type, self.start).then(function (result) {
+    weatherService.getWeatherGraph(self.graph_type, this.fix_datepicker_bug(self.start), this.fix_datepicker_bug(self.end)).then(function (result) {
       self.setState(self.original(result))
     });
   };
@@ -81,7 +85,7 @@ class  WeatherGraph  extends  Component {
   handleChangeGraphEnd = date => {
     let self = this;
     self.end = date;
-    weatherService.getWeatherGraph(self.graph_type, self.start, self.end).then(function (result) {
+    weatherService.getWeatherGraph(self.graph_type, this.fix_datepicker_bug(self.start), this.fix_datepicker_bug(self.end)).then(function (result) {
       self.setState(self.original(result))
     });
   };
@@ -89,7 +93,7 @@ class  WeatherGraph  extends  Component {
   handleChangeGraphShowPast = event => {
     let self = this;
     self.show_past = event.target.checked;
-    weatherService.getWeatherGraph(self.graph_type, self.start, self.end, self.show_past).then(function (result) {
+    weatherService.getWeatherGraph(self.graph_type, this.fix_datepicker_bug(self.start), this.fix_datepicker_bug(self.end), self.show_past).then(function (result) {
       self.setState(self.original(result))
     });
   };

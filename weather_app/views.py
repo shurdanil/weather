@@ -1,14 +1,13 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import *
-from datetime import timedelta, datetime
-from django.utils import timezone
+from datetime import datetime
 
 
 @api_view(('GET',))
 def points(request, graph_type='temperature'):
-    start = request.GET.get('start', timezone.now() - timedelta(days=7)).split('T')[0]
-    end = request.GET.get('end', timezone.now()).split('T')[0]
+    start = request.GET.get('start').split('T')[0]
+    end = request.GET.get('end').split('T')[0]
     show_past = request.GET.get('show_past')
 
     weather_all = WeatherValue.objects.all()

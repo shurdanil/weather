@@ -2,22 +2,27 @@ version: '3'
 
 services:
   db:
-    image: postgres
+    image: shurdanil/wheather:postgres
     environment:
       - POSTGRES_USER=django
       - POSTGRES_PASSWORD=django
       - POSTGRES_DB=weather
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
   django:
-    build: .
+    image: shurdanil/wheather:django
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     ports:
       - "8000:8000"
     depends_on:
       - db
   frontend:
-    build: ./frontend
+    image: shurdanil/wheather:frontend
     command: ["npm", "start"]
     ports:
       - "3000:3000"
+
+volumes:
+  postgres_data:

@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME', 'weather'),
         'USER': os.environ.get('DB_USER', 'django'),
         'PASSWORD': os.environ.get('DB_PASS', 'django'),
-        'HOST': 'db',
+        'HOST': 'localhost',
         'PORT': '5432'
     }
 }
