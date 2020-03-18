@@ -80,10 +80,11 @@ WSGI_APPLICATION = 'weather.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', ''),
-        'USER': os.environ.get('DB_USER', ''),
-        'PASSWORD': os.environ.get('DB_PASS', ''),
-        'HOST': 'localhost',
+        'NAME': os.environ.get('DB_NAME', 'weather'),
+        'USER': os.environ.get('DB_USER', 'django'),
+        'PASSWORD': os.environ.get('DB_PASS', 'django'),
+        'HOST': 'db',
+        # 'HOST': 'localhost',
         'PORT': '5432'
     }
 }
@@ -132,4 +133,8 @@ CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
        'http://localhost:5432',
+       'http://localhost:3000',
+       'http://frontend:3000',
+       'http://127.0.0.1:3000',
+       'http://localhost:8000'
 )
