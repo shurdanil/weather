@@ -20,7 +20,7 @@ class WeatherValue(models.Model):
         verbose_name="Temperature"
     )
 
-    time = models.DateTimeField(
+    time = models.DateField(
         null=False,
         blank=False,
         verbose_name="Registration time"

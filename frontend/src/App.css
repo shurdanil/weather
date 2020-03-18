@@ -1,5 +1,9 @@
 @import  'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
 
+#show_past {
+    margin-top: 13px;
+}
+
 .App {
   text-align: center;
 }
