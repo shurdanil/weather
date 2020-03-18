@@ -130,7 +130,6 @@ class  WeatherGraph  extends  Component {
           <div className="col-3">
             <DatePicker
               id='graph_start'
-              clearIcon={false}
               onChange={this.handleChangeGraphStart}
               value={this.start}
               maxDate={this.end}
@@ -140,7 +139,6 @@ class  WeatherGraph  extends  Component {
         <div className="col-3">
           <DatePicker
             id='graph_end'
-            clearIcon={false}
             onChange={this.handleChangeGraphEnd}
             value={this.end}
             maxDate={this.today}
